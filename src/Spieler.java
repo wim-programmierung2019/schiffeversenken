@@ -8,7 +8,7 @@ public abstract class Spieler {
 	protected SchiffeVersenken spiel;
 	// Spielername
 	protected String name;
-	// Spielfeld f�r diesen Spieler
+	// Spielfeld fuer diesen Spieler
 	private Feld feld;
 
 	/**
@@ -56,7 +56,8 @@ public abstract class Spieler {
 		
 		Feld neuesFeld = new Feld(getSpiel().getFeldGroesse());
 		
-		for(Schiff schiff : schiffe) {
+		for(int s = 0; s<schiffe.size(); s++) {
+			Schiff schiff = schiffe.get(s);
 			// Jeweils maximal 2*n^2 Versuche das Schiff zu positionieren
 			for(int i = 0; i < getSpiel().getFeldGroesse() * getSpiel().getFeldGroesse() * 2; i++) {
 				// Zufallsorientierung
