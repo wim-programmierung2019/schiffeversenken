@@ -42,10 +42,10 @@ public class SpielerComputer3 extends Spieler {
                     koordinateX = 2;
                     }
                 if(position.getY() == 9){
-                                        
+                    koordinateY = 0;                   
                 }
                 if(position.getX() == 9){
-                    
+                    koordinateX = 0;
                 }
                 koordinateY++;
                 koordinateX++;
@@ -80,10 +80,10 @@ public class SpielerComputer3 extends Spieler {
                     koordinateX = 2;
                     }
                 if(koordinateY == 9){
-                                        
+                    koordinateY = 0;                   
                 }
                 if(koordinateX == 9){
-                    
+                    koordinateX = 0;
                 }
                 koordinateY++;
                 koordinateX++;
