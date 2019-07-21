@@ -52,12 +52,7 @@ public class Rechteck {
 	}
 
 	public boolean ueberlappt(Rechteck eck) {
-		//return x < r.x + r.width && x + width > r.x && y < r.y + r.height && y + height > r.y;
 		return getX1() <= eck.getX2() && getX2() >= eck.getX1() && getY1() <= eck.getY2() && getY2() >= eck.getY1();
-		// Rechte untere Ecke 1 > linke obere Ecke 2 und linke obere Ecke 1 < rechte untereEcke 2
-//		if((eck.getX2() > getX1() && eck.getY2() > getY1()) && (eck.getX1() < getX2() && eck.getY1() < getY2())) {
-//			return true;
-//		} return false;
 	}
 	
 	public boolean vollstaendigUeberdecktVon(Rechteck anderesRechteck) {

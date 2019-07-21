@@ -72,8 +72,12 @@ public class Schiff {
 	public String toString() {
 		// Ergibt eine Schiffsrepraesentation, z.B. "Schiff (xx.x)"
 		String ergebnis = "Schiff (";
-		for(boolean position:treffer) {
-			ergebnis += (position==true) ? "x" : "."; 
+		for(int i = 0; i<treffer.length; i++) {
+			if(treffer[i]==true) {
+				ergebnis += "x";
+			} else {
+				ergebnis += "."; 
+			}
 		}
 		return ergebnis + ")";
 	}
@@ -85,8 +89,8 @@ public class Schiff {
 	 */
 	private int zaehleTrue(boolean[] elemente) {
 		int counter = 0;
-		for(boolean element : elemente) {
-			if(element == true) counter ++;
+		for(int i=0; i<elemente.length; i++) {
+			if(elemente[i] == true) counter ++;
 		}
 		return counter;
 	}

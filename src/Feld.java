@@ -41,8 +41,8 @@ public class Feld {
 		if(aktiv == true) {
 			aktiv = false; // nur einen Zug erlauben
 			
-			for(Schiff schiff : schiffe) {
-				TrefferTyp ergebnis = schiff.beschiesse(pos);
+			for(int i=0; i<schiffe.size(); i++) {
+				TrefferTyp ergebnis = schiffe.get(i).beschiesse(pos);
 				switch(ergebnis) {
 				case TREFFER:
 					return ergebnis;
@@ -62,8 +62,8 @@ public class Feld {
 	}
 	
 	public boolean hatVerloren() {
-		for(Schiff schiff : schiffe) {
-			if(!schiff.isVersenkt()) {
+		for(int i=0; i<schiffe.size(); i++) {
+			if(!schiffe.get(i).isVersenkt()) {
 				return false;
 			}
 		}
@@ -85,8 +85,8 @@ public class Feld {
 		}
 		
 		// Schiff darf nicht mit anderen Schiffen (inkl. Puffer) kollidieren
-		for(Schiff bestehendesSchiff : schiffe) {
-			if(bestehendesSchiff.kollidiert(schiff)){
+		for(int i=0; i<schiffe.size(); i++) {
+			if(schiffe.get(i).kollidiert(schiff)){
 				throw new IllegalArgumentException("Ein anderes Schiff blockiert den Platz");
 			}
 		}
@@ -101,8 +101,8 @@ public class Feld {
 	 */
 	public int getAnzahlTreffer() {
 		int anzahl = 0;
-		for(Schiff schiff : schiffe) {
-			for(boolean getroffen : schiff.getTreffer()) {
+		for(int i=0; i<schiffe.size(); i++) {
+			for(boolean getroffen : schiffe.get(i).getTreffer()) {
 				if(getroffen == true) anzahl++;
 			}
 		}
@@ -115,7 +115,8 @@ public class Feld {
 		for(int j = 0; j < groesse; j++) {
 			for(int i = 0; i < groesse; i++) {
 				String nextPos = ".";
-				for(Schiff schiff : schiffe) {
+				for(int k=0; k<schiffe.size(); k++) {
+					Schiff schiff = schiffe.get(k);
 					Koordinate testKoordinate = new Koordinate(i,j);
 					if(testKoordinate.liegtZwischen(schiff.getPosition().getStart(), schiff.getPosition().getEnde())) {
 						if(schiff.isGetroffen(testKoordinate)){
