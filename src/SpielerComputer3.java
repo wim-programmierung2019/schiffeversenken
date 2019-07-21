@@ -9,7 +9,7 @@ public class SpielerComputer3 extends Spieler {
     protected int speicherY = 0;
     protected int counter = 0;
     protected boolean back = false;
-    protected Koordinate[] myShots;
+    protected Koordinate[] myShots = new Koordinate[1000];
     protected int zugNummer = 0;
 
     public SpielerComputer3(String name) {
@@ -19,16 +19,37 @@ public class SpielerComputer3 extends Spieler {
     @Override
     public Koordinate schuss() {
         // Idee: Schrittweise jede Koordinate abarbeiten
-
+        // Prüfung ob Koordinate schon beschossen
+        for (int i = 0; i < zugNummer; i++) {
+            if (myShots[i].getX() == koordinateX && myShots[i].getY() == koordinateY) {
+                if (koordinateX == 9 || koordinateY == 9) {
+                    if (koordinateX == 9 && koordinateY == 9) {
+                        koordinateX = 0;
+                        koordinateY = 0;
+                    } else {
+                        if (koordinateX == 9) {
+                            koordinateX = 0;
+                        }
+                        if (koordinateY == 9) {
+                            koordinateY = 0;
+                        }
+                    }
+                }
+                koordinateX = Helfer.zufallszahl(0,9);
+                koordinateY = Helfer.zufallszahl(0,9);
+            }
+        }
         int x = koordinateX;
         int y = koordinateY;
-       //yShots[zugNummer]= new Koordinate (x,y);
+        myShots[zugNummer] = new Koordinate(koordinateX, koordinateY);
+        zugNummer++;
         return new Koordinate(x, y);
+
     }
 
     @Override
     public void ergebnis(TrefferTyp ergebnisTyp, Koordinate position) {
-        
+
         TrefferTyp treffer = TrefferTyp.TREFFER;
         TrefferTyp wasser = TrefferTyp.WASSER;
         TrefferTyp versenkt = TrefferTyp.VERSENKT;
@@ -60,10 +81,10 @@ public class SpielerComputer3 extends Spieler {
                     koordinateY++;
                     koordinateX++;
                 }
-            }else {
-               counter++;
-               back = false;
-               treffer(position.getX(), position.getY());
+            } else {
+                counter++;
+                back = false;
+                treffer(position.getX(), position.getY());
             }
 
         }
@@ -85,61 +106,92 @@ public class SpielerComputer3 extends Spieler {
 
     public void treffer(int x, int y) {
         getroffen = true;
-        if(counter == 0){
-            if(koordinateY == 9){
+        if (counter == 0) {
+            if (koordinateY == 9) {
                 koordinateY = 0;
-            }else{
+            } else {
                 koordinateY++;
             }
         }
-        if(counter == 1){
-            if(back == false){
+        if (counter == 1) {
+            if (back == false) {
                 back = true;
                 koordinateY = speicherY;
                 koordinateX = speicherX;
             }
-            if(koordinateY == 0){
+            if (koordinateY == 0) {
                 koordinateY = 9;
-            }else{
+            } else {
                 koordinateY--;
             }
-            
+
         }
-        if(counter == 2){
-            if(back == false){
+        if (counter == 2) {
+            if (back == false) {
                 back = true;
                 koordinateY = speicherY;
                 koordinateX = speicherX;
             }
-             if(koordinateX == 9){
+            if (koordinateX == 9) {
                 koordinateX = 0;
-            }else{
+            } else {
                 koordinateX++;
             }
         }
-        if(counter ==3){
-            if(back == false){
+        if (counter == 3) {
+            if (back == false) {
                 back = true;
                 koordinateY = speicherY;
                 koordinateX = speicherX;
             }
-             if(koordinateX== 0){
-                koordinateX= 9;
-            }else{
-                koordinateY--;
+            if (koordinateX == 0) {
+                koordinateX = 9;
+            } else {
+                koordinateX--;
             }
         }
-        /*if (koordinateY == 9 || koordinateX == 9) {
-            if (koordinateY == 9) {
-                koordinateY = 0;
-            }
-        }
-        koordinateY++;*/
+        /*
+         * if (koordinateY == 9 || koordinateX == 9) { if (koordinateY == 9) {
+         * koordinateY = 0; } } koordinateY++;
+         */
     }
 
     public void returnTaktik() {
+        if(getroffen == true){
+        myShots[zugNummer] = new Koordinate(koordinateX + 1, koordinateY);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX - 1, koordinateY);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX + 1, koordinateY + 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX + 1, koordinateY - 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX - 1, koordinateY + 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX - 1, koordinateY - 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX, koordinateY + 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX, koordinateY - 1);
+        zugNummer++;
         koordinateX = speicherX;
         koordinateY = speicherY;
+        myShots[zugNummer] = new Koordinate(koordinateX + 1, koordinateY);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX - 1, koordinateY);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX + 1, koordinateY + 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX + 1, koordinateY - 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX - 1, koordinateY + 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX - 1, koordinateY - 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX, koordinateY + 1);
+        zugNummer++;
+        myShots[zugNummer] = new Koordinate(koordinateX, koordinateY - 1);
+        zugNummer++;
         if (koordinateY == 9 || koordinateX == 9) {
             if (koordinateY == 9 && koordinateX == 9) {
                 koordinateY = 0;
@@ -156,6 +208,25 @@ public class SpielerComputer3 extends Spieler {
             koordinateX++;
             koordinateY++;
         }
+    }else{
+        if (koordinateY == 9 || koordinateX == 9) {
+            if (koordinateY == 9 && koordinateX == 9) {
+                koordinateY = 0;
+                koordinateX = 2;
+            } else {
+                if (koordinateY == 9) {
+                    koordinateY = 0;
+                }
+                if (koordinateX == 9) {
+                    koordinateX = 0;
+                }
+            }
+        } else {
+            koordinateX++;
+            koordinateY++;
+        }
+    }
+    
 
     }
 
