@@ -6,7 +6,7 @@ public class SpielerComputer3 extends Spieler {
 	protected int zugNummer = 0;
 	protected int koordinateX = 0;
 	protected int koordinateY = 0;
-	protected boolean treffer = false;
+	protected boolean getroffen = false;
 	protected int speicherX = 0;
 	protected int speicherY = 0;
 
@@ -35,7 +35,7 @@ public class SpielerComputer3 extends Spieler {
             treffer(position.getX(), position.getY());
         }
         if(ergebnisTyp == wasser){
-            if(position.getY() == 9 || position.getX()) == 9)
+            if(position.getY() == 9 || position.getX() == 9)
             {
                 if(position.getY() == 9 && position.getX() == 9){
                     koordinateY = 0;
@@ -53,7 +53,7 @@ public class SpielerComputer3 extends Spieler {
         }
 
         if(ergebnisTyp == versenkt){
-            treffer = false;
+            getroffen = false;
             returnTaktik();
             //rückkehr
         }
@@ -66,7 +66,7 @@ public class SpielerComputer3 extends Spieler {
 	}
 	
 	public void treffer(int x, int y){
-	    treffer = true;
+	    getroffen = true;
 	    koordinateY++;
 	}
 	
