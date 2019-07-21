@@ -7,8 +7,8 @@ public class Main {
 		SchiffeVersenken spiel = new SchiffeVersenken(GROESSE);
 		
 		// Zwei Spieler anlegen
-		spiel.addSpieler(new SpielerComputer("Spieler 1"));
-		spiel.addSpieler(new SpielerComputer3("Piraten"));
+		spiel.addSpieler(new SpielerMitPlan("Christoph"));
+		spiel.addSpieler(new SpielerBarracuda("Barracuda"));
 		
 		// Los gehts
 		spiel.starten();

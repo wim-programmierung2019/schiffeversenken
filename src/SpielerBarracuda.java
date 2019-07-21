@@ -23,8 +23,8 @@ public class SpielerBarracuda extends Spieler {
 		          {Versuch =new Koordinate(Versuch.getX()+1,Versuch.getY());}
 		}
 		else{
-		Versuch = new Koordinate(Helfer.zufallszahl(0, spiel.getFeldGroesse()), 
-							  Helfer.zufallszahl(0, spiel.getFeldGroesse()));}}
+		Versuch = new Koordinate(Helfer.zufallszahl(0, spiel.getFeldGroesse()-1), 
+							  Helfer.zufallszahl(0, spiel.getFeldGroesse()-1));}}
 		while (Trefferhistorie[Versuch.getX()][Versuch.getY()]!=null);
    
 
