@@ -68,8 +68,8 @@ public abstract class Spieler {
 				
 				// Zufallskoordinate
 				Koordinate koordinate = new Koordinate(
-					(int) (Math.random() * getSpiel().getFeldGroesse()), 
-					(int) (Math.random() * getSpiel().getFeldGroesse()));
+					(int) (Helfer.zufallszahl(0, getSpiel().getFeldGroesse() - 1)), 
+					(int) (Helfer.zufallszahl(0, getSpiel().getFeldGroesse() - 1)));
 				
 				try{
 					neuesFeld.setzeSchiff(schiff, koordinate, orientierung);

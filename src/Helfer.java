@@ -9,6 +9,6 @@ public class Helfer {
 	 * @return
 	 */
 	public static int zufallszahl(int minimum, int maximum) {
-		return (int) (Math.random() * (maximum - minimum)) + minimum;
+		return (int) (Math.random() * (maximum - minimum + 1)) + minimum;
 	}
 }
