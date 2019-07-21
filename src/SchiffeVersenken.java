@@ -81,7 +81,7 @@ public class SchiffeVersenken {
 				// Status ausgeben 
 				ausgabe += "Beschiesse " + versuch.toString() + " --> " + ergebnis.toString() + "!";
 				System.out.println(ausgabe);
-			} while(ergebnis != TrefferTyp.WASSER && !spieler1.hatVerloren() && !spieler2.hatVerloren());
+			} while(ergebnis != TrefferTyp.WASSER && !spieler1.hatVerloren() && !spieler2.hatVerloren() && zugNummer < 2 * feldGroesse * feldGroesse);
 			
 		} while(!spieler1.hatVerloren() && !spieler2.hatVerloren() && zugNummer < 2 * feldGroesse * feldGroesse);
 		

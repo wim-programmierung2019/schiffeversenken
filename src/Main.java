@@ -8,7 +8,7 @@ public class Main {
 		
 		// Zwei Spieler anlegen
 		spiel.addSpieler(new SpielerComputer("Spieler 1"));
-		spiel.addSpieler(new SpielerComputer3("Piratenasfasfasffgsaf"));
+		spiel.addSpieler(new SpielerComputer3("Piraten"));
 		
 		// Los gehts
 		spiel.starten();
